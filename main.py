@@ -4,15 +4,15 @@ import requests
 from datetime import datetime
 import smtplib
 
-my_email = "althamas118@gmail.com"
-my_pass = "mzgvruobgjedfgnn"
+my_email = "youremail@gmail.com"
+my_pass = "generate password as new app password in gmail"
 
 MY_LAT = 12.540010  # Your latitude
 MY_LONG = 75.009677  # Your longitude
 
 
 def is_up():
-    response = requests.get(url="http://api.open-notify.org/iss-now.json")
+    response = requests.get(url="http://api.open-notify.org/iss-now.json") #ISS location API
     response.raise_for_status()
     data = response.json()
     iss_latitude = float(data["iss_position"]["latitude"])
@@ -31,7 +31,7 @@ def is_night():
         "lng": MY_LONG,
         "formatted": 0,
     }
-    response = requests.get("https://api.sunrise-sunset.org/json", params=parameters)
+    response = requests.get("https://api.sunrise-sunset.org/json", params=parameters) #Sunrise-Sunset API
     response.raise_for_status()
     data = response.json()
     sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
